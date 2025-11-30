@@ -202,7 +202,7 @@ This software is licensed under terms that can be found in the LICENSE file in t
 
 ## 👤 Author
 
-Created as part of embedded systems learning project.
+Created by yours truly, inspired by Fastbit EBA on Udemy
 
 ## 🔗 References
 
