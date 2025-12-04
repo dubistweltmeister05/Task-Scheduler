@@ -1,5 +1,5 @@
 
-task_Scheduler_.elf:     file format elf32-littlearm
+Task-Scheduler.elf:     file format elf32-littlearm
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
@@ -37,17 +37,17 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_rnglists 000000a0  00000000  00000000  00003830  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  000021e8  00000000  00000000  000038d0  2**0
+ 17 .debug_macro  000021f1  00000000  00000000  000038d0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   00000dac  00000000  00000000  00005ab8  2**0
+ 18 .debug_line   00000da9  00000000  00000000  00005ac1  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    00007f80  00000000  00000000  00006864  2**0
+ 19 .debug_str    00007f5e  00000000  00000000  0000686a  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .comment      00000043  00000000  00000000  0000e7e4  2**0
+ 20 .comment      00000043  00000000  00000000  0000e7c8  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  00000c7c  00000000  00000000  0000e828  2**2
+ 21 .debug_frame  00000c7c  00000000  00000000  0000e80c  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_line_str 00000063  00000000  00000000  0000f4a4  2**0
+ 22 .debug_line_str 00000041  00000000  00000000  0000f488  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -90,10 +90,10 @@ Disassembly of section .text:
  80001d6:	4770      	bx	lr
 
 080001d8 <task1_handler>:
-void MemManage_Handler(void);
-void HardFault_Handler(void);
+#if !defined(__SOFT_FP__) && defined(__ARM_FP)
+#warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+#endif
 
-uint32_t current_task = 0;
 
 void task1_handler(void) {
  80001d8:	b580      	push	{r7, lr}
