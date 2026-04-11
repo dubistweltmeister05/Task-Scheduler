@@ -141,7 +141,9 @@ void task4_handler(void)
 
 void init_systick_timer(uint32_t tick_hz)
 {
+	//systick_reload_value
 	uint32_t *pSRVR = (uint32_t*)0xE000E014;
+	//systick control status register
 	uint32_t *pSCSR = (uint32_t*)0xE000E010;
 
     /* calculation of reload value */
@@ -378,6 +380,7 @@ void unblock_tasks(void)
 void  SysTick_Handler(void)
 {
 
+	//Interrupt control and state register
 	uint32_t *pICSR = (uint32_t*)0xE000ED04;
 
     update_global_tick_count();
